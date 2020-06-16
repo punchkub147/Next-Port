@@ -102,7 +102,9 @@ export default {
             Sendit 2stage
           </a>
         </>,
-        "Front-end code reviwer"
+        "Front-end code reviwer",
+        "Knowleage K8S Environment",
+        "Jemeter Load test"
       ]
     },
     {
