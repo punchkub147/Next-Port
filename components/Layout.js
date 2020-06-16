@@ -14,7 +14,10 @@ const theme = {
   border: {
     radius: "15px"
   },
-  shadow: ["box-shadow: 0px 6px 10px -4px rgba(135,135,135,0.55)"]
+  shadow: [
+    "0px 6px 10px -4px rgba(135,135,135,0.55)",
+    "0px 6px 10px -4px rgba(80,80,80,1)"
+  ]
 };
 
 const Background = styled.div`
@@ -32,7 +35,7 @@ const Background = styled.div`
 `;
 
 const Container = styled.div`
-  width: 700px;
+  max-width: 700px;
   background-color: ${props => props.theme.color.container};
   padding: ${props => props.theme.space.default};
   box-shadow: ${props => props.theme.shadow[0]};

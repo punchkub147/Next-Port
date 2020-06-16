@@ -1,4 +1,5 @@
 import { action, thunk } from "easy-peasy";
+import moment from "moment";
 import {
   faBirthdayCake,
   faMapMarkerAlt,
@@ -18,7 +19,7 @@ export default {
       },
       {
         icon: faBirthdayCake,
-        text: "23 yo"
+        text: `${moment().diff(moment("30/03/1996", "DD/MM/YYYY"), "years")} yo`
       },
       {
         icon: faEnvelope,
@@ -27,7 +28,7 @@ export default {
       {
         icon: faFile,
         text: "Resume",
-        link: "https://github.com/punchkub147"
+        link: "https://2m27c.sse.codesandbox.io/"
       },
       {
         icon: faFileImage,
@@ -42,7 +43,8 @@ export default {
       },
       {
         icon: faLinkedin,
-        text: "Linkedin"
+        text: "Linkedin",
+        link: "https://www.linkedin.com/in/kittapard-puaime-6553b4146/"
       }
     ]
   },
@@ -50,17 +52,21 @@ export default {
     {
       name: "Frontend",
       level: "Pro",
-      items: ["React Hook", "Redux", "Javascript", "HTML5", "CSS3", "Bootstrap"]
+      items: ["React Hook", "Redux", "Javascript", "Tailwind"]
     },
     {
       name: "Frontend",
       level: "Learning",
-
-      items: ["Jest", "NextJS", "Vue"]
+      items: ["Jest", "NextJS", "JS Design pattern"]
     },
     {
       name: "Backend",
       items: ["NodeJS", "ExpressJS", "MySQL", "Sequelize", "PHP"]
+    },
+    {
+      name: "Backend",
+      level: "Learning",
+      items: ["GraphQL"]
     },
     {
       name: "Design",
@@ -68,25 +74,41 @@ export default {
     },
     {
       name: "Management",
-      items: ["Git", "Trello", "Linux cmd"]
+      items: ["Git", "Jira", "Linux cmd"]
     }
   ],
-  interesData: [
+  interestData: [
     {
       name: "Design",
-      items: ["Drawing", "Doodle", "UI"]
-    },
-    {
-      name: "Investing",
-      items: ["Option", "Forex"]
+      items: ["UX/UI", "Data visualization", "Drawing"]
     }
   ],
 
   worksData: [
     {
+      locationName: "True-e-logistics",
+      link: "https://www.linkedin.com/company/true-e-logistics/about/",
+      time: "sep 2020 - present",
+      position: "Fullstack Developer",
+      workDetail:
+        "Work large project logistic management, Work on agile, scrum methodology",
+      highlights: [
+        <>
+          Develop website{" "}
+          <a
+            href="https://manage.staging.sendit.asia/th/2stage/"
+            target="_blank"
+          >
+            Sendit 2stage
+          </a>
+        </>,
+        "Front-end code reviwer"
+      ]
+    },
+    {
       locationName: "Buzzfreeze Solutions Co., Ltd.",
       link: "http://buzzfreeze.com/web/",
-      time: "2018 - present",
+      time: "aug 2018 - aug 2019",
       position: "Fullstack Developer",
       workDetail:
         "Open the world of backend with NodeJS, Sequelize and Experience of React Hooks, React Native",
@@ -98,7 +120,7 @@ export default {
             User
           </a>
           {" & "}
-          <a href="https://mybmwreward.com" target="_blank">
+          <a href="https://admin.mybmwreward.com" target="_blank">
             Admin
           </a>
         </>,

@@ -1,5 +1,10 @@
+import { useRef } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPrint } from "@fortawesome/free-solid-svg-icons";
+import ReactToPrint from "react-to-print";
+import Paper from "../pages/index";
 
 const Header = styled.div`
   padding: ${props => props.theme.space.default} 0;
@@ -20,6 +25,7 @@ const Navbar = styled.ul`
 `;
 
 export default props => {
+  const componentRef = useRef();
   return (
     <Header>
       <Link href="/">
@@ -27,8 +33,19 @@ export default props => {
       </Link>
       <Navbar>
         <Link href="/">
-          <li>Portfolio </li>
+          <li>Portfolio</li>
         </Link>
+        {/* <ReactToPrint
+          trigger={() => (
+            <button>
+              <FontAwesomeIcon icon={faPrint} />
+            </button>
+          )}
+          content={() => componentRef.current}
+        />
+        <div style={{ display: "none" }}>
+          <Paper />
+        </div> */}
       </Navbar>
     </Header>
   );

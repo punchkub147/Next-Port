@@ -2,13 +2,7 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useStoreState } from "easy-peasy";
-import {
-  faPhone,
-  faTasks,
-  faUniversity,
-  faHeart,
-  faBriefcase
-} from "@fortawesome/free-solid-svg-icons";
+import Fbox from "fbox";
 
 import Layout from "../components/Layout";
 
@@ -17,21 +11,29 @@ const Portfolio = styled.div`
     padding: 0px;
     margin: 5px 0;
   }
-  display: grid;
+  /* display: grid;
   grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-row-gap: 20px; */
 `;
 
 const ProfileHeader = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 150px auto;
-  grid-column-gap: 20px;
+  grid-column-gap: 20px; */
+  display: flex;
+  margin-bottom: 20px;
 `;
 
 const ProfileContent = styled.div`
-  display: grid;
+  /* display: grid;
   grid-column-gap: 25px;
-  grid-template-columns: auto 300px;
+  grid-template-columns: auto 300px; */
+  display: flex;
+  transition: ease-in 0.2s;
+  flex-direction: column;
+  @media screen and (min-width: 720px) {
+    flex-direction: row;
+  }
 `;
 
 const Profile = styled.div`
@@ -42,25 +44,34 @@ const Profile = styled.div`
 const ProfileSection = styled.div`
   margin-bottom: 25px;
   .label {
-    display: grid;
-    grid-template-columns: 30px auto;
+    /* display: grid;
+    grid-template-columns: 30px auto; */
+    display: flex;
+    flex-direction: row;
     .icon {
       padding-top: 5px;
+      min-width: 40px;
     }
   }
 `;
 
 const WorkSection = styled.div`
   margin-bottom: 25px;
+  padding: 0 20px;
+  .section {
+    margin-bottom: 20px;
+  }
   .place {
-    width: 100%;
-    padding: 10px 20px;
+    /* width: 100%; */
+    margin-left: -20px;
+    padding: 5px 20px;
     background: #eee;
     border-radius: ${props => props.theme.border.radius};
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    line-height: 18px;
   }
   .detail {
-    padding: 0 20px;
+    /* padding: 0 20px; */
   }
   .highlight {
     border: 1px solid #ccc;
@@ -69,13 +80,20 @@ const WorkSection = styled.div`
 `;
 
 const Display = styled.div`
-  width: 150px;
-  height: 150px;
-  box-shadow: ${props => props.theme.shadow[0]};
+  margin-right: 20px;
   img {
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
+    @media screen and (min-width: 720px) {
+      width: 150px;
+      height: 150px;
+    }
     border-radius: 100px 100px 100px 100px;
+    transition: ease-in 0.2s;
+    box-shadow: ${props => props.theme.shadow[0]};
+  }
+  img:hover {
+    box-shadow: ${props => props.theme.shadow[1]};
   }
 `;
 
@@ -95,7 +113,7 @@ const PortFolioPaper = () => {
   const {
     profileData,
     skillsData,
-    interesData,
+    interestData,
     worksData,
     educationsData
   } = useStoreState(state => state.portfolio);
@@ -105,17 +123,16 @@ const PortFolioPaper = () => {
         <Display>
           <img src="/static/img/display.jpg" alt="display" />
         </Display>
-        <span>
-          <br />
+        <Fbox column center>
           <h4>Kittapard Puime</h4>
           <h6>
             Front-End Developer
             <br />
             Thinking of ways of combining art and programming
             <br />
-            and experience of backend developer
+            and experience of backend developer.
           </h6>
-        </span>
+        </Fbox>
       </ProfileHeader>
       <ProfileContent>
         <Profile>
@@ -124,7 +141,7 @@ const PortFolioPaper = () => {
           </h5>
           <WorkSection>
             {worksData.map(work => (
-              <Fragment>
+              <div className="section">
                 <div className="place">
                   <a href={work.link} target="_blank">
                     <b>{work.locationName}</b>
@@ -140,7 +157,7 @@ const PortFolioPaper = () => {
                     <p className="highlight">{highlight}</p>
                   ))}
                 </div>
-              </Fragment>
+              </div>
             ))}
           </WorkSection>
           <h5>
@@ -148,7 +165,7 @@ const PortFolioPaper = () => {
           </h5>
           <WorkSection>
             {educationsData.map(work => (
-              <Fragment>
+              <div className="section">
                 <div className="place">
                   <a href={work.link} target="_blank">
                     <b>{work.locationName}</b>
@@ -164,7 +181,7 @@ const PortFolioPaper = () => {
                     <p className="highlight">{highlight}</p>
                   ))}
                 </div>
-              </Fragment>
+              </div>
             ))}
           </WorkSection>
         </Profile>
@@ -192,7 +209,7 @@ const PortFolioPaper = () => {
               <i>INTEREST</i>
             </h5>
 
-            {interesData.map(interest => (
+            {interestData.map(interest => (
               <Fragment>
                 <p>
                   <b>{interest.name}</b>
@@ -211,9 +228,9 @@ const PortFolioPaper = () => {
             </h5>
             {profileData.contract.map(item => (
               <div className="label">
-                <span className="icon">
+                <div className="icon">
                   <FontAwesomeIcon icon={item.icon} />
-                </span>
+                </div>
                 {item.link ? (
                   <a href={item.link} target="_blank">
                     <p>{item.text}</p>
