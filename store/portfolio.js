@@ -66,7 +66,7 @@ export default {
     {
       name: "Backend",
       level: "Learning",
-      items: ["GraphQL"]
+      items: ["GraphQL", "NestJS"]
     },
     {
       name: "Design",
